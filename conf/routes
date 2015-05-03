@@ -11,8 +11,8 @@ GET        /testjson                    controllers.Application.testjson
 ## master
 GET        /anime/v1/master/            controllers.AnimeV1.masterList2
 GET        /anime/v1/master/list        controllers.AnimeV1.masterList
-GET        /anime/v1/master/year/:year_num  controllers.AnimeV1.year(year_num)
-
+GET        /anime/v1/master/:year_num   controllers.AnimeV1.year(year_num)
+GET        /anime/v1/master/:year_num/:cours   controllers.AnimeV1.yearCours(year_num, cours)
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                controllers.Assets.at(path="/public", file)

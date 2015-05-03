@@ -54,4 +54,28 @@ object AnimeV1 extends Controller {
       Ok(Json.toJson(bases_records))
     }
   }
+
+  def yearCours(year_num: String, cours: String) = Action {
+    // TODO @AKB428 EHCASHEを使う
+    DB.withConnection { implicit c =>
+      val cours_infos_records = SQL("SELECT * FROM COURS_INFOS WHERE YEAR = {year_num} AND cours = {cours} ").
+        on("year_num" -> year_num, "cours" -> cours)().map {
+        row => (row[Int]("id"))
+      }.toList
+      Logger.debug(cours_infos_records.toString())
+      val seq_cours_infos_records: Seq[Int] = cours_infos_records
+
+      val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
+        row => (
+          Map(
+            "id" -> JsNumber(row[Int]("id")),
+            "title" -> JsString(row[String]("title")))
+          )
+      }.toList
+
+
+
+      Ok(Json.toJson(bases_records))
+    }
+  }
 }

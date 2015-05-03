@@ -3,7 +3,7 @@ package controllers
 import anorm._
 import play.api.Play.current
 import play.api.db._
-import play.api.libs.json.Json
+import play.api.libs.json.{JsString, JsNumber, Json}
 import play.api.mvc._
 import play.api.Logger
 
@@ -42,7 +42,12 @@ object AnimeV1 extends Controller {
       val seq_cours_infos_records: Seq[Int] = cours_infos_records
 
       val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
-        row => Map("title" -> row[String]("title"), "public_url" -> row[String]("public_url"))}.toList
+        row => (
+          Map(
+            "id" -> JsNumber(row[Int]("id")),
+            "title" -> JsString(row[String]("title")))
+          )
+      }.toList
 
 
 

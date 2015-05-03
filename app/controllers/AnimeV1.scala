@@ -21,6 +21,7 @@ object AnimeV1 extends Controller {
   }
 
   def masterList2 = Action {
+    // TODO @AKB428 EHCASHEを使う
     DB.withConnection { implicit c =>
       val records = SQL("SELECT * FROM COURS_INFOS ORDER BY ID")().map {
         row => (
@@ -32,13 +33,20 @@ object AnimeV1 extends Controller {
   }
 
   def year(year_num: String) = Action {
+    // TODO @AKB428 EHCASHEを使う
     DB.withConnection { implicit c =>
-      val records = SQL("SELECT * FROM COURS_INFOS WHERE YEAR = {year_num} ORDER BY ID").on("year_num" -> year_num)().map {
-        row => (
-          Map("id" -> row[Int]("id"), "year" -> row[Int]("year"), "cours" -> row[Int]("cours")))
+      val cours_infos_records = SQL("SELECT * FROM COURS_INFOS WHERE YEAR = {year_num} ORDER BY ID").on("year_num" -> year_num)().map {
+        row => (row[Int]("id"))
       }.toList
-      Logger.debug(year_num)
-      Ok(Json.toJson(records))
+      Logger.debug(cours_infos_records.toString())
+      val seq_cours_infos_records: Seq[Int] = cours_infos_records
+
+      val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
+        row => Map("title" -> row[String]("title"), "public_url" -> row[String]("public_url"))}.toList
+
+
+
+      Ok(Json.toJson(bases_records))
     }
   }
 }

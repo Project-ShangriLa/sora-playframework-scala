@@ -1,5 +1,7 @@
 package controllers
 
+import java.sql.Date
+
 import anorm._
 import play.api.Play.current
 import play.api.db._
@@ -57,7 +59,15 @@ object AnimeV1 extends Controller {
         row => (
           Map(
             "id" -> JsNumber(row[Int]("id")),
-            "title" -> JsString(row[String]("title")))
+            "title" -> JsString(row[String]("title")),
+            "title_short1" -> JsString(row[String]("title_short1")),
+            "title_short2" -> JsString(row[String]("title_short2")),
+            "title_short3" -> JsString(row[String]("title_short3")),
+            "public_url" -> JsString(row[String]("public_url")),
+            "twitter_account" -> JsString(row[String]("twitter_account")),
+            "twitter_hash_tag" -> JsString(row[String]("twitter_hash_tag")),
+            "cours_id" -> JsNumber(row[Int]("cours_id"))
+           )
           )
       }.toList
 

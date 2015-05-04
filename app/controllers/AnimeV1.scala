@@ -1,5 +1,7 @@
 package controllers
 
+import java.util.Date
+
 import anorm._
 import play.api.Play.current
 import play.api.db._
@@ -64,7 +66,9 @@ object AnimeV1 extends Controller {
             "twitter_hash_tag" -> JsString(row[String]("twitter_hash_tag")),
             "cours_id" -> JsNumber(row[Int]("cours_id")),
             "sex" -> JsNumber(BigDecimal(row[Option[Int]]("sex").getOrElse(0))),
-            "sequel" -> JsNumber(BigDecimal(row[Option[Int]]("sequel").getOrElse(0)))
+            "sequel" -> JsNumber(BigDecimal(row[Option[Int]]("sequel").getOrElse(0))),
+            "created_at" -> JsString(row[Date]("created_at").toString),
+            "updated_at" -> JsString(row[Date]("updated_at").toString)
           )
           )
       }.toList

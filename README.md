@@ -179,8 +179,8 @@ requiredに◯がないものは値なし(=データメンテナンスしてい�
 | twitter_account|String|◯|ツイッターアカウント|"saenai_heroine"|
 | twitter_hash_tag|String|◯|ツイッターハッシュタグ|"saekano"|
 | cours_id     |Number|◯|coursマスターのID|5|
-| created_at   |String|◯|データの作成日時|"2015-01-08 09:37:01"|
-| updated_at   |String|◯|データの更新日時|"2015-01-08 09:39:04"|
+| created_at   |String|◯|データの作成日時|"2015-01-08 09:37:01.0"|
+| updated_at   |String|◯|データの更新日時|"2015-01-08 09:37:01.0"|
 | sex          |Number|-|男性向け=0, 女性向け=1|0|
 | sequel       |Number|-|続編モノの場合は1以上の数値が入る|0|
 
@@ -191,28 +191,49 @@ curl http://api.moemoe.tokyo/anime/v1/master/2015/2 | jq .
 [
   {
     "title_short2": "",
-    "twitter_account": "shokugeki_anime",
-    "public_url": "http://shokugekinosoma.com/",
-    "title_short1": "ソーマ",
-    "twitter_hash_tag": "shokugeki_anime",
-    "id": 176,
-    "cours_id": 6,
-    "title": "食戟のソーマ",
-    "title_short3": ""
+    "twitter_account": "saenai_heroine",
+    "public_url": "http://www.saenai.tv/",
+    "title_short1": "冴えカノ",
+    "sex": 0,
+    "twitter_hash_tag": "saekano",
+    "id": 126,
+    "sequel": 0,
+    "created_at": "2015-01-08 09:37:01.0",
+    "cours_id": 5,
+    "title": "冴えない彼女の育てかた",
+    "title_short3": "",
+    "updated_at": "2015-01-08 09:37:01.0"
   },
   {
     "title_short2": "",
-    "twitter_account": "danmachi_anime",
-    "public_url": "http://danmachi.com/",
-    "title_short1": "ダンまち",
-    "twitter_hash_tag": "danmachi",
-    "id": 177,
-    "cours_id": 6,
-    "title": "ダンジョンに出会いを求めるのは間違っているだろうか",
-    "title_short3": ""
-  }  
+    "twitter_account": "ansatsu_anime",
+    "public_url": "",
+    "title_short1": "暗殺教室",
+    "sex": 0,
+    "twitter_hash_tag": "暗殺教室",
+    "id": 127,
+    "sequel": 0,
+    "created_at": "2015-01-08 09:38:00.0",
+    "cours_id": 5,
+    "title": "暗殺教室",
+    "title_short3": "",
+    "updated_at": "2015-01-08 09:38:00.0"
+  },
 ]
 ```
+
+## V1 Internal API
+
+### 非公開用API (更新系/サーバー制御)用
+
+#### (TODO) PUT /v1/internal/master/
+
+データを更新する
+
+#### (TODO) PUT /v1/internal/chache/ehcahe/refresh 
+
+Ehcacheを強制リフレッシュする 
+
 
 
 

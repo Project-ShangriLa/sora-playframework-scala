@@ -190,25 +190,27 @@ requiredに◯がないものは値なし(=データメンテナンスしてい�
 curl http://api.moemoe.tokyo/anime/v1/master/2015/2 | jq .
 [
   {
-    "id": 124,
-    "title": "幸腹グラフィティ"
+    "title_short2": "",
+    "twitter_account": "shokugeki_anime",
+    "public_url": "http://shokugekinosoma.com/",
+    "title_short1": "ソーマ",
+    "twitter_hash_tag": "shokugeki_anime",
+    "id": 176,
+    "cours_id": 6,
+    "title": "食戟のソーマ",
+    "title_short3": ""
   },
   {
-    "id": 125,
-    "title": "銃皇無尽のファフニール"
-  },
-  {
-    "id": 126,
-    "title": "冴えない彼女の育てかた"
-  },
-  {
-    "id": 127,
-    "title": "暗殺教室"
-  },
-  {
-    "id": 129,
-    "title": "探偵歌劇ミルキィホームズTD"
-  }
+    "title_short2": "",
+    "twitter_account": "danmachi_anime",
+    "public_url": "http://danmachi.com/",
+    "title_short1": "ダンまち",
+    "twitter_hash_tag": "danmachi",
+    "id": 177,
+    "cours_id": 6,
+    "title": "ダンジョンに出会いを求めるのは間違っているだろうか",
+    "title_short3": ""
+  }  
 ]
 ```
 

@@ -98,7 +98,7 @@ ShangriLa API Serverが持っているアニメ情報のクールごとの情報
 
 ### GET /aime/v1/master/:year
 
-YYYY年アニメ1クール4クールの情報をすべて返却します
+:yearで指定されたYYYY年のアニメ1クールから4クールまでの情報をすべて返却します
 
 #### Request Body
 
@@ -149,7 +149,10 @@ curl http://api.moemoe.tokyo/anime/v1/master/2015 | jq .
 
 ### GET /anime/v1/master/:year/:n
 
-YYYY年アニメのうちの指定されたクールの情報をすべて返します
+:yeatで指定されたYYYY年アニメの:nで指定されたクールの情報をすべて返します。
+
+* /2015/1 だったら2015年1期(冬期) のアニメ作品情報を全て返却します。
+* /2015/2 だったら2015年2期(春期) のアニメ作品情報を全て返却します。
 
 #### Request Body
 

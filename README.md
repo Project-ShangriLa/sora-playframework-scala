@@ -60,7 +60,7 @@ ShangriLa API Serverが持っているアニメ情報のクールごとの情報
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:------|:-------|
-| cours_id | Cours Object |システムで割り振ったクールごとのユニークなID(coursマスターのID)|1|
+| cours_idの値 | Cours Object |cours_idはシステムで割り振ったクールごとのユニークなID(coursマスターのID)|1|
 
 ##### Cours Object
 
@@ -108,7 +108,7 @@ YYYY年アニメ1クール4クールの情報をすべて返却します
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| Array    |Base object|後述|
+| Array    |Base Object|後述|
 
 ##### Base Object
 
@@ -160,7 +160,7 @@ YYYY年アニメのうちの指定されたクールの情報をすべて返し�
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| Array    |Base object|後述||
+| Array    |Base Object|後述||
 
 ##### Base Object
 

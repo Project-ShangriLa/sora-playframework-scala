@@ -20,18 +20,6 @@ object AnimeV1 extends Controller {
     }
   }
 
-  def masterList2 = Action {
-    // TODO @AKB428 EHCASHEを使う
-    DB.withConnection { implicit c =>
-      val records = SQL("SELECT * FROM COURS_INFOS ORDER BY ID")().map {
-        row => (
-          Map("id" -> row[Int]("id"), "year" -> row[Int]("year"), "cours" -> row[Int]("cours")))
-      }.toList
-
-      Ok(Json.toJson(records))
-    }
-  }
-
   def year(year_num: String) = Action {
     // TODO @AKB428 EHCASHEを使う
     DB.withConnection { implicit c =>

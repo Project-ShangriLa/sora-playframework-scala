@@ -12,6 +12,7 @@ import play.api.Logger
 object AnimeV1 extends Controller {
 
   def masterList = Action {
+    // TODO @AKB428 Ehcacheを使う
     DB.withConnection { implicit c =>
       val records = SQL("SELECT * FROM COURS_INFOS ORDER BY ID")().map {
         row => (row[Int]("id").toString,
@@ -29,17 +30,24 @@ object AnimeV1 extends Controller {
         row => (row[Int]("id"))
       }.toList
       Logger.debug(cours_infos_records.toString())
-      val seq_cours_infos_records: Seq[Int] = cours_infos_records
+      if (cours_infos_records.size == 0) {
+        Logger.warn(s"Execute no data request year=$year_num")
+        Ok(Json.toJson(cours_infos_records))
+      }
+      else {
 
-      val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
-        row => (
-          Map(
-            "id" -> JsNumber(row[Int]("id")),
-            "title" -> JsString(row[String]("title")))
-          )
-      }.toList
+        val seq_cours_infos_records: Seq[Int] = cours_infos_records
 
-      Ok(Json.toJson(bases_records))
+        val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
+          row => (
+            Map(
+              "id" -> JsNumber(row[Int]("id")),
+              "title" -> JsString(row[String]("title")))
+            )
+        }.toList
+
+        Ok(Json.toJson(bases_records))
+      }
     }
   }
 
@@ -51,31 +59,39 @@ object AnimeV1 extends Controller {
         row => (row[Int]("id"))
       }.toList
       Logger.debug(cours_infos_records.toString())
-      val seq_cours_infos_records: Seq[Int] = cours_infos_records
 
-      val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
-        row => (
-          Map(
-            "id" -> JsNumber(row[Int]("id")),
-            "title" -> JsString(row[String]("title")),
-            "title_short1" -> JsString(row[String]("title_short1")),
-            "title_short2" -> JsString(row[String]("title_short2")),
-            "title_short3" -> JsString(row[String]("title_short3")),
-            "public_url" -> JsString(row[String]("public_url")),
-            "twitter_account" -> JsString(row[String]("twitter_account")),
-            "twitter_hash_tag" -> JsString(row[String]("twitter_hash_tag")),
-            "cours_id" -> JsNumber(row[Int]("cours_id")),
-            "sex" -> JsNumber(BigDecimal(row[Option[Int]]("sex").getOrElse(0))),
-            "sequel" -> JsNumber(BigDecimal(row[Option[Int]]("sequel").getOrElse(0))),
-            "created_at" -> JsString(row[Date]("created_at").toString),
-            "updated_at" -> JsString(row[Date]("updated_at").toString)
-          )
-          )
-      }.toList
+      if (cours_infos_records.size == 0) {
+        Logger.warn(s"Execute no data request year=$year_num cours=$cours")
+        Ok(Json.toJson(cours_infos_records))
+      }
+      else {
+
+        val seq_cours_infos_records: Seq[Int] = cours_infos_records
+
+        val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
+          row => (
+            Map(
+              "id" -> JsNumber(row[Int]("id")),
+              "title" -> JsString(row[String]("title")),
+              "title_short1" -> JsString(row[String]("title_short1")),
+              "title_short2" -> JsString(row[String]("title_short2")),
+              "title_short3" -> JsString(row[String]("title_short3")),
+              "public_url" -> JsString(row[String]("public_url")),
+              "twitter_account" -> JsString(row[String]("twitter_account")),
+              "twitter_hash_tag" -> JsString(row[String]("twitter_hash_tag")),
+              "cours_id" -> JsNumber(row[Int]("cours_id")),
+              "sex" -> JsNumber(BigDecimal(row[Option[Int]]("sex").getOrElse(0))),
+              "sequel" -> JsNumber(BigDecimal(row[Option[Int]]("sequel").getOrElse(0))),
+              "created_at" -> JsString(row[Date]("created_at").toString),
+              "updated_at" -> JsString(row[Date]("updated_at").toString)
+            )
+            )
+        }.toList
 
 
 
-      Ok(Json.toJson(bases_records))
+        Ok(Json.toJson(bases_records))
+      }
     }
   }
 }

@@ -37,8 +37,6 @@ object AnimeV1 extends Controller {
           )
       }.toList
 
-
-
       Ok(Json.toJson(bases_records))
     }
   }
@@ -67,7 +65,7 @@ object AnimeV1 extends Controller {
             "cours_id" -> JsNumber(row[Int]("cours_id")),
             "sex" -> JsNumber(BigDecimal(row[Option[Int]]("sex").getOrElse(0))),
             "sequel" -> JsNumber(BigDecimal(row[Option[Int]]("sequel").getOrElse(0)))
-           )
+          )
           )
       }.toList
 

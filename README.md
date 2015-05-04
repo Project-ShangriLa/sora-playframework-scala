@@ -17,10 +17,10 @@ ShangriLa API Server
 
 ### インストール
 
-* mysql or mariadb インストール
+* Mysql or MariaDB インストール
 * anime_admin_development データベース作成
 * マスターテーブルのインサート
-* activator インストール
+* このディレクトリでactivatorを起動しPlayフレームワークをインストール
 
 ### 起動方法
 
@@ -181,7 +181,7 @@ requiredに◯がないものは値なし(=データメンテナンスしてい�
 | cours_id     |Number|◯|coursマスターのID|5|
 | created_at   |String|◯|データの作成日時|"2015-01-08 09:37:01"|
 | updated_at   |String|◯|データの更新日時|"2015-01-08 09:39:04"|
-| sex          |Number|-|男性向け=0, 女性向け=1, メンテナンスしてないor両性の場合=NULL|0|
+| sex          |Number|-|男性向け=0, 女性向け=1|0|
 | sequel       |Number|-|続編モノの場合は1以上の数値が入る|0|
 
 レスポンス例

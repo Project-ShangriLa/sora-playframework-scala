@@ -1,7 +1,5 @@
 package controllers
 
-import java.sql.Date
-
 import anorm._
 import play.api.Play.current
 import play.api.db._
@@ -23,7 +21,7 @@ object AnimeV1 extends Controller {
   }
 
   def year(year_num: String) = Action {
-    // TODO @AKB428 EHCASHEを使う
+    // TODO @AKB428 Ehcacheを使う
     DB.withConnection { implicit c =>
       val cours_infos_records = SQL("SELECT * FROM COURS_INFOS WHERE YEAR = {year_num} ORDER BY ID").on("year_num" -> year_num)().map {
         row => (row[Int]("id"))
@@ -46,7 +44,7 @@ object AnimeV1 extends Controller {
   }
 
   def yearCours(year_num: String, cours: String) = Action {
-    // TODO @AKB428 EHCASHEを使う
+    // TODO @AKB428 Ehcacheを使う
     DB.withConnection { implicit c =>
       val cours_infos_records = SQL("SELECT * FROM COURS_INFOS WHERE YEAR = {year_num} AND cours = {cours} ").
         on("year_num" -> year_num, "cours" -> cours)().map {
@@ -66,7 +64,9 @@ object AnimeV1 extends Controller {
             "public_url" -> JsString(row[String]("public_url")),
             "twitter_account" -> JsString(row[String]("twitter_account")),
             "twitter_hash_tag" -> JsString(row[String]("twitter_hash_tag")),
-            "cours_id" -> JsNumber(row[Int]("cours_id"))
+            "cours_id" -> JsNumber(row[Int]("cours_id")),
+            "sex" -> JsNumber(BigDecimal(row[Option[Int]]("sex").getOrElse(0))),
+            "sequel" -> JsNumber(BigDecimal(row[Option[Int]]("sequel").getOrElse(0)))
            )
           )
       }.toList

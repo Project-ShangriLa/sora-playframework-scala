@@ -1,8 +1,8 @@
 #Sora 穹
 
-ShangriLa API Server
+ShangriLa Anime API Server
 
-## ShangriLa API Server システム概要
+## ShangriLa Anime API Server システム概要
 
 ### 説明
 
@@ -17,7 +17,7 @@ ShangriLa API Server
 
 ### インストール
 
-* Mysql or MariaDB インストール
+* MySQL or MariaDB インストール
 * anime_admin_development データベース作成
 * マスターテーブルのインサート
 * このディレクトリでactivatorを起動しPlayフレームワークをインストール

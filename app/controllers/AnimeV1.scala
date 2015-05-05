@@ -14,7 +14,7 @@ object AnimeV1 extends Controller {
   def masterList = Action {
     // TODO @AKB428 Ehcacheを使う
     DB.withConnection { implicit c =>
-      val records = SQL("SELECT * FROM COURS_INFOS ORDER BY ID")().map {
+      val records = SQL("SELECT * FROM cours_infos ORDER BY id")().map {
         row => (row[Int]("id").toString,
           Map("id" -> row[Int]("id"), "year" -> row[Int]("year"), "cours" -> row[Int]("cours")))
       }.toMap
@@ -26,7 +26,7 @@ object AnimeV1 extends Controller {
   def year(year_num: String) = Action {
     // TODO @AKB428 Ehcacheを使う
     DB.withConnection { implicit c =>
-      val cours_infos_records = SQL("SELECT * FROM COURS_INFOS WHERE YEAR = {year_num} ORDER BY ID").on("year_num" -> year_num)().map {
+      val cours_infos_records = SQL("SELECT * FROM cours_infos WHERE YEAR = {year_num} ORDER BY id").on("year_num" -> year_num)().map {
         row => (row[Int]("id"))
       }.toList
       Logger.debug(cours_infos_records.toString())
@@ -38,7 +38,7 @@ object AnimeV1 extends Controller {
 
         val seq_cours_infos_records: Seq[Int] = cours_infos_records
 
-        val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
+        val bases_records = SQL("SELECT * FROM bases WHERE cours_id IN ({IDS}) ORDER BY id").on("IDS" -> seq_cours_infos_records)().map {
           row => (
             Map(
               "id" -> JsNumber(row[Int]("id")),
@@ -54,7 +54,7 @@ object AnimeV1 extends Controller {
   def yearCours(year_num: String, cours: String) = Action {
     // TODO @AKB428 Ehcacheを使う
     DB.withConnection { implicit c =>
-      val cours_infos_records = SQL("SELECT * FROM COURS_INFOS WHERE YEAR = {year_num} AND cours = {cours} ").
+      val cours_infos_records = SQL("SELECT * FROM cours_infos WHERE YEAR = {year_num} AND cours = {cours} ").
         on("year_num" -> year_num, "cours" -> cours)().map {
         row => (row[Int]("id"))
       }.toList
@@ -68,7 +68,7 @@ object AnimeV1 extends Controller {
 
         val seq_cours_infos_records: Seq[Int] = cours_infos_records
 
-        val bases_records = SQL("SELECT * FROM BASES WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
+        val bases_records = SQL("SELECT * FROM bases WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
           row => (
             Map(
               "id" -> JsNumber(row[Int]("id")),

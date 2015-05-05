@@ -4,8 +4,6 @@
 
 # Home page
 GET        /                            controllers.Application.index
-GET        /test                        controllers.Application.test
-GET        /testjson                    controllers.Application.testjson
 
 #Anime API V1
 ## master

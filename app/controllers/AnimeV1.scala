@@ -27,7 +27,7 @@ object AnimeV1 extends Controller {
     // TODO @AKB428 Ehcacheを使う
     DB.withConnection { implicit c =>
       val cours_infos_records = SQL("SELECT * FROM cours_infos WHERE YEAR = {year_num} ORDER BY id").on("year_num" -> year_num)().map {
-        row => (row[Int]("id"))
+        row => row[Int]("id")
       }.toList
       Logger.debug(cours_infos_records.toString())
       if (cours_infos_records.size == 0) {
@@ -39,11 +39,10 @@ object AnimeV1 extends Controller {
         val seq_cours_infos_records: Seq[Int] = cours_infos_records
 
         val bases_records = SQL("SELECT * FROM bases WHERE cours_id IN ({IDS}) ORDER BY id").on("IDS" -> seq_cours_infos_records)().map {
-          row => (
+          row =>
             Map(
               "id" -> JsNumber(row[Int]("id")),
               "title" -> JsString(row[String]("title")))
-            )
         }.toList
 
         Ok(Json.toJson(bases_records))
@@ -69,7 +68,7 @@ object AnimeV1 extends Controller {
         val seq_cours_infos_records: Seq[Int] = cours_infos_records
 
         val bases_records = SQL("SELECT * FROM bases WHERE COURS_ID IN ({IDS}) ORDER BY ID").on("IDS" -> seq_cours_infos_records)().map {
-          row => (
+          row =>
             Map(
               "id" -> JsNumber(row[Int]("id")),
               "title" -> JsString(row[String]("title")),
@@ -85,10 +84,7 @@ object AnimeV1 extends Controller {
               "created_at" -> JsString(row[Date]("created_at").toString),
               "updated_at" -> JsString(row[Date]("updated_at").toString)
             )
-            )
         }.toList
-
-
 
         Ok(Json.toJson(bases_records))
       }

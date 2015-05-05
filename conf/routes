@@ -7,9 +7,9 @@ GET        /                            controllers.Application.index
 
 #Anime API V1
 ## master
-GET        /anime/v1/master/cours              controllers.AnimeV1.masterList
-GET        /anime/v1/master/:year_num          controllers.AnimeV1.year(year_num)
-GET        /anime/v1/master/:year_num/:cours   controllers.AnimeV1.yearCours(year_num, cours)
+GET        /anime/v1/master/cours                                 controllers.AnimeV1.masterList
+GET        /anime/v1/master/$year_num<[0-9]{4}+>                  controllers.AnimeV1.year(year_num)
+GET        /anime/v1/master/$year_num<[0-9]{4}+>/$cours<[1-4]+>   controllers.AnimeV1.yearCours(year_num, cours)
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                controllers.Assets.at(path="/public", file)

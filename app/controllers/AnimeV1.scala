@@ -55,7 +55,7 @@ object AnimeV1 extends Controller {
     DB.withConnection { implicit c =>
       val cours_infos_records = SQL("SELECT * FROM cours_infos WHERE YEAR = {year_num} AND cours = {cours} ").
         on("year_num" -> year_num, "cours" -> cours)().map {
-        row => (row[Int]("id"))
+        row => row[Int]("id")
       }.toList
       Logger.debug(cours_infos_records.toString())
 

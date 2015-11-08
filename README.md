@@ -19,6 +19,7 @@ ShangriLa Anime API Server
 
 * MySQL or MariaDB インストール
 * anime_admin_development データベース作成
+* DDL登録 [ShanriLa DDL](https://github.com/Project-ShangriLa/shangrila/tree/master/DDL)
 * マスターテーブルのインサート
 * このディレクトリでactivatorを起動しPlayフレームワークをインストール
 

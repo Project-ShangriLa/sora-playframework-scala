@@ -187,6 +187,8 @@ requiredに◯がないものは値なし(=データメンテナンスしてい�
 | updated_at   |String|◯|データの更新日時|"2015-01-08 09:37:01.0"|
 | sex          |Number|-|男性向け=0, 女性向け=1|0|
 | sequel       |Number|-|続編モノの場合は1以上の数値が入る|0|
+| city_code    |Number|-|代表聖地地区の5桁の市区町村コード(RESAS APIなど地方自治体のオープンデータと連携する時に使用)|22203|
+| city_name    |String|-|代表聖地地区の市区町村名|静岡県静岡市|
 
 レスポンス例
 
@@ -195,33 +197,37 @@ curl http://api.moemoe.tokyo/anime/v1/master/2015/2 | jq .
 [
   {
     "title_short2": "",
-    "twitter_account": "saenai_heroine",
-    "public_url": "http://www.saenai.tv/",
-    "title_short1": "冴えカノ",
+    "twitter_account": "3lion_anime",
+    "public_url": "http://www.nhk.or.jp/anime/3lion/",
+    "title_short1": "3月のライオン",
     "sex": 0,
-    "twitter_hash_tag": "saekano",
-    "id": 126,
+    "twitter_hash_tag": "３月のライオン",
+    "id": 465,
     "sequel": 0,
-    "created_at": "2015-01-08 09:37:01.0",
-    "cours_id": 5,
-    "title": "冴えない彼女の育てかた",
+    "created_at": "2016-09-19 19:24:09.0",
+    "city_name": "東京都中央区佃",
+    "cours_id": 12,
+    "title": "3月のライオン",
+    "city_code": 13102,
     "title_short3": "",
-    "updated_at": "2015-01-08 09:37:01.0"
+    "updated_at": "2016-09-19 19:24:09.0"
   },
   {
-    "title_short2": "",
-    "twitter_account": "ansatsu_anime",
-    "public_url": "",
-    "title_short1": "暗殺教室",
+    "title_short2": "Occultic;Nine",
+    "twitter_account": "occultic_nine",
+    "public_url": "http://www.occultic-nine.com/",
+    "title_short1": "オカルティック・ナイン",
     "sex": 0,
-    "twitter_hash_tag": "暗殺教室",
-    "id": 127,
+    "twitter_hash_tag": "オカン",
+    "id": 466,
     "sequel": 0,
-    "created_at": "2015-01-08 09:38:00.0",
-    "cours_id": 5,
-    "title": "暗殺教室",
-    "title_short3": "",
-    "updated_at": "2015-01-08 09:38:00.0"
+    "created_at": "2016-09-19 19:24:09.0",
+    "city_name": "東京都武蔵野市吉祥寺",
+    "cours_id": 12,
+    "title": "Occultic;Nine-オカルティック・ナイン-",
+    "city_code": 13203,
+    "title_short3": "オカン",
+    "updated_at": "2016-09-19 19:24:09.0"
   },
 ]
 ```

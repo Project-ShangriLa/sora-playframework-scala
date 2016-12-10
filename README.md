@@ -193,7 +193,7 @@ requiredに◯がないものは値なし(=データメンテナンスしてい�
 レスポンス例
 
 ```
-curl http://api.moemoe.tokyo/anime/v1/master/2015/2 | jq .
+curl http://api.moemoe.tokyo/anime/v1/master/2016/4 | jq .
 [
   {
     "title_short2": "",

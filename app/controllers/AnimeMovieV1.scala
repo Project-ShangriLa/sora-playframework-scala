@@ -33,6 +33,12 @@ object AnimeMovieV1 extends Controller {
             "title_short1" -> JsString(row[String]("title_short1")),
             "title_short2" -> JsString(row[Option[String]]("title_short2").getOrElse("")),
             "title_short3" -> JsString(row[Option[String]]("title_short3").getOrElse("")),
+            "year" -> JsNumber(row[Int]("year")),
+            "start_month" -> JsNumber(BigDecimal(row[Option[Int]]("start_month").getOrElse(0))),
+            "start_date" -> JsString(row[Date]("start_date").toString),
+            "release_schedule_season" -> JsNumber(BigDecimal(row[Option[Int]]("release_schedule_season").getOrElse(0))),
+            "movie_type" -> JsNumber(row[Int]("movie_type")),
+            "bases_id" -> JsNumber(BigDecimal(row[Option[Int]]("bases_id").getOrElse(0))),
             "public_url" -> JsString(row[String]("public_url")),
             "twitter_account" -> JsString(row[String]("twitter_account")),
             "twitter_hash_tag" -> JsString(row[String]("twitter_hash_tag")),
@@ -60,6 +66,12 @@ object AnimeMovieV1 extends Controller {
             "title_short1" -> JsString(row[String]("title_short1")),
             "title_short2" -> JsString(row[Option[String]]("title_short2").getOrElse("")),
             "title_short3" -> JsString(row[Option[String]]("title_short3").getOrElse("")),
+            "year" -> JsNumber(row[Int]("year")),
+            "start_month" -> JsNumber(BigDecimal(row[Option[Int]]("start_month").getOrElse(0))),
+            "start_date" -> JsString(row[Date]("start_date").toString),
+            "release_schedule_season" -> JsNumber(BigDecimal(row[Option[Int]]("release_schedule_season").getOrElse(0))),
+            "movie_type" -> JsNumber(row[Int]("movie_type")),
+            "bases_id" -> JsNumber(BigDecimal(row[Option[Int]]("bases_id").getOrElse(0))),
             "public_url" -> JsString(row[String]("public_url")),
             "twitter_account" -> JsString(row[String]("twitter_account")),
             "twitter_hash_tag" -> JsString(row[String]("twitter_hash_tag")),
@@ -75,4 +87,5 @@ object AnimeMovieV1 extends Controller {
       Ok(Json.toJson(bases_records))
     }
   }
+
 }

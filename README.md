@@ -23,11 +23,17 @@ ShangriLa Anime API Server
 * マスターテーブルのインサート
 * このディレクトリでactivatorを起動しPlayフレームワークをインストール
 
-### 起動方法
+### 起動方法 (リリース)
 
 ```
 shell> activator
 activator shell> start 80
+```
+
+### 起動方法 (デバッグ)
+
+```
+shell> activator run
 ```
 
 ### ライセンス

@@ -14,7 +14,7 @@ GET        /anime/v1/master/$year_num<[0-9]{4}+>/$cours<[1-4]+>   controllers.An
 ## master-movie
 GET        /anime/v1/master/movie/year                                     controllers.AnimeMovieV1.masterList
 GET        /anime/v1/master/movie/$year_num<[0-9]{4}+>                     controllers.AnimeMovieV1.year(year_num)
-GET        /anime/v1/master/movie/$year_num<[0-9]{4}+>/$month<[0-9]{2}+>   controllers.AnimeMovieV1.yearMonth(year_num, month)
+GET        /anime/v1/master/movie/$year_num<[0-9]{4}+>/$month<[1-9]?[0-9]>   controllers.AnimeMovieV1.yearMonth(year_num, month)
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                controllers.Assets.at(path="/public", file)

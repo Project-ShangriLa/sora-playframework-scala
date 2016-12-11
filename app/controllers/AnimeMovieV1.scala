@@ -35,7 +35,7 @@ object AnimeMovieV1 extends Controller {
             "title_short3" -> JsString(row[Option[String]]("title_short3").getOrElse("")),
             "year" -> JsNumber(row[Int]("year")),
             "start_month" -> JsNumber(BigDecimal(row[Option[Int]]("start_month").getOrElse(0))),
-            "start_date" -> JsString(row[Date]("start_date").toString),
+            "start_date" -> JsString(row[Option[Date]]("start_date").getOrElse("").toString),
             "release_schedule_season" -> JsNumber(BigDecimal(row[Option[Int]]("release_schedule_season").getOrElse(0))),
             "movie_type" -> JsNumber(row[Int]("movie_type")),
             "bases_id" -> JsNumber(BigDecimal(row[Option[Int]]("bases_id").getOrElse(0))),
@@ -46,8 +46,8 @@ object AnimeMovieV1 extends Controller {
             "sequel" -> JsNumber(BigDecimal(row[Option[Int]]("sequel").getOrElse(0))),
             "created_at" -> JsString(row[Date]("created_at").toString),
             "updated_at" -> JsString(row[Date]("updated_at").toString),
-            "city_name" -> JsString(row[String]("city_name")),
-            "city_code" -> JsNumber(row[Int]("city_code"))
+            "city_name" -> JsString(row[Option[String]]("city_name").getOrElse("")),
+            "city_code" ->  JsNumber(BigDecimal(row[Option[Int]]("city_code").getOrElse(0)))
           )
       }.toList
 
@@ -68,7 +68,7 @@ object AnimeMovieV1 extends Controller {
             "title_short3" -> JsString(row[Option[String]]("title_short3").getOrElse("")),
             "year" -> JsNumber(row[Int]("year")),
             "start_month" -> JsNumber(BigDecimal(row[Option[Int]]("start_month").getOrElse(0))),
-            "start_date" -> JsString(row[Date]("start_date").toString),
+            "start_date" -> JsString(row[Option[Date]]("start_date").getOrElse("").toString),
             "release_schedule_season" -> JsNumber(BigDecimal(row[Option[Int]]("release_schedule_season").getOrElse(0))),
             "movie_type" -> JsNumber(row[Int]("movie_type")),
             "bases_id" -> JsNumber(BigDecimal(row[Option[Int]]("bases_id").getOrElse(0))),
@@ -79,8 +79,8 @@ object AnimeMovieV1 extends Controller {
             "sequel" -> JsNumber(BigDecimal(row[Option[Int]]("sequel").getOrElse(0))),
             "created_at" -> JsString(row[Date]("created_at").toString),
             "updated_at" -> JsString(row[Date]("updated_at").toString),
-            "city_name" -> JsString(row[String]("city_name")),
-            "city_code" -> JsNumber(row[Int]("city_code"))
+            "city_name" -> JsString(row[Option[String]]("city_name").getOrElse("")),
+            "city_code" ->  JsNumber(BigDecimal(row[Option[Int]]("city_code").getOrElse(0)))
           )
       }.toList
 

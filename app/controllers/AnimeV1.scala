@@ -5,7 +5,9 @@ import java.util.Date
 import anorm._
 import play.api.Play.current
 import play.api.db._
-import play.api.libs.json.{JsString, JsNumber, Json}
+import play.api.libs.json._
+
+
 import play.api.mvc._
 import play.api.Logger
 
@@ -90,12 +92,14 @@ object AnimeV1 extends Controller {
               "updated_at" -> JsString(row[Date]("updated_at").toString),
               "city_name" -> JsString(row[String]("city_name")),
               "city_code" -> JsNumber(row[Int]("city_code")),
-              "og_title" -> JsString(row[String]("og_title")),
-              "og_type" -> JsString(row[String]("og_type")),
-              "og_description" -> JsString(row[String]("og_description")),
-              "og_url" -> JsString(row[String]("og_url")),
-              "og_image" -> JsString(row[String]("og_image")),
-              "og_site_name" -> JsString(row[String]("og_site_name"))
+              "ogp" -> Json.obj(
+                "og_title" -> JsString(row[String]("og_title")),
+                "og_type" -> JsString(row[String]("og_type")),
+                "og_description" -> JsString(row[String]("og_description")),
+                "og_url" -> JsString(row[String]("og_url")),
+                "og_image" -> JsString(row[String]("og_image")),
+                "og_site_name" -> JsString(row[String]("og_site_name"))
+              )
             )
         }.toList
 

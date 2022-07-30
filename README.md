@@ -1,4 +1,4 @@
-#Sora 穹
+# Sora 穹
 
 ShangriLa Anime API Server
 
@@ -7,6 +7,9 @@ ShangriLa Anime API Server
 ### 説明
 
 アニメ作品の情報を返すREST形式のAPIサーバーです。
+
+こちらは2015年〜2020年までのAnimeAPIリファレンス実装とAPIドキュメントです。
+2021年以降は実装はGolang版[anime_api_golang](https://github.com/Project-ShangriLa/anime_api_golang)に移行されています。（クライアントから呼び出す際のAPIの基本仕様の変更はありません）
 
 
 ### サーバーシステム要件
